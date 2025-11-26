@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 19be430434af28a4f9e68e8e98dec81e
+guid: c11a96457c6b31c49b88647c9dfe40b3
 PluginImporter:
   externalObjects: {}
   serializedVersion: 3
@@ -12,7 +12,7 @@ PluginImporter:
   validateReferences: 1
   platformData:
     Any:
-      enabled: 0
+      enabled: 1
       settings:
         Exclude Editor: 0
         Exclude Linux64: 0
@@ -35,6 +35,9 @@ PluginImporter:
       enabled: 1
       settings:
         CPU: None
+    WebGL:
+      enabled: 0
+      settings: {}
     Win:
       enabled: 1
       settings:
@@ -42,15 +45,15 @@ PluginImporter:
     Win64:
       enabled: 1
       settings:
-        CPU: AnyCPU
+        CPU: x86_64
     WindowsStoreApps:
       enabled: 0
       settings:
-        CPU: AnyCPU
+        CPU: X86
         DontProcess: false
         PlaceholderPath: 
         SDK: AnySDK
         ScriptingBackend: AnyScriptingBackend
   userData: 
-  assetBundleName: 
+  assetBundleName: ltt bundle
   assetBundleVariant: 

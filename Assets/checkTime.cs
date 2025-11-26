@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class checkTime : MonoBehaviour
 {
-
+    // CHANGE THIS PATH TO YOUR DESIRED DIRECTORY
+    public static string directoryPath = ".../Assets/Resources/";
 
     class FileHandler // Renamed to avoid conflict with System.IO.File
     {
@@ -20,9 +21,8 @@ public class checkTime : MonoBehaviour
             return System.IO.File.Exists(path);
         }
 
-        public static void CreateFile()
+        public static void CreateFile(String directoryPath)
         {
-            string directoryPath = ".../Assets/Resources/";
             string fileName = "Time.txt";
             string fullPath = Path.Combine(directoryPath, fileName);
             // print the full path for debugging
@@ -36,6 +36,7 @@ public class checkTime : MonoBehaviour
 
             // Create the file
             System.IO.File.WriteAllText(fullPath, "");
+            
         }
         public static void WriteTime(string time)
         {
@@ -50,7 +51,7 @@ public class checkTime : MonoBehaviour
             {
                 // If the file does not exist, create it
                 Debug.Log("File does not exist, creating file.");
-                CreateFile();
+                CreateFile(directoryPath);
                 WriteTime(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")); // Write the current time to the file
             }
             else
@@ -96,7 +97,7 @@ public class checkTime : MonoBehaviour
             return EachTime;
         }
 
-        public static string ThresholdCalc(int Threshold_years, int Threshold_months, int Threshold_days, int Threshold_hours, int Threshold_minutes, int Threshold_seconds, List<int> EachTime)
+        public static string ThresholdCalc(int Threshold_years, int Threshold_months, int Threshold_days, int Threshold_hours, int Threshold_minutes, int Threshold_seconds, GameObject Custom_Scripts, List<int> EachTime)
         {
             if (Threshold_years < 0 || Threshold_months < 0 || Threshold_days < 0 || Threshold_hours < 0 || Threshold_minutes < 0 || Threshold_seconds < 0)
             {
@@ -111,7 +112,17 @@ public class checkTime : MonoBehaviour
                 EachTime[5] > Threshold_seconds)
             {
                 Debug.Log("Threshold exceeded.");
-                return "Threshold exceeded.";
+                if (Custom_Scripts != null)
+                {
+                    // Activate the custom scripts GameObject
+                    Custom_Scripts.SetActive(true);
+                    Debug.Log("Custom scripts activated.");
+                }
+                else
+                {
+                    Debug.LogWarning("Custom_Scripts GameObject is null, cannot activate.");
+                }
+                    return "Threshold exceeded.";
             }
             else
             {
@@ -123,22 +134,26 @@ public class checkTime : MonoBehaviour
         }
     }
 
+    // Public Time Thresholds for customizing the thresholds
     public int Threshold_years;
     public int Threshold_months;
     public int Threshold_days;
     public int Threshold_hours;
     public int Threshold_minutes;
     public int Threshold_seconds;
+    // Custom Scripts is an optional field to enable a script when the threshold is exceeded
     public GameObject Custom_Scripts;
-    public string path_time;
-    public static string path = ".../Assets/Resources/Time.txt";
+ 
+    public static string path = Path.Combine(directoryPath, "Text.txt");
     void Awake()
     {
+        
+        DontDestroyOnLoad(this.gameObject);
 
         // This method is called when the script instance is being loaded
         Debug.Log("checkTime script is loaded.");
         FileHandler.CheckFile();
-        FileHandler.ThresholdCalc(Threshold_years, Threshold_months, Threshold_days, Threshold_hours, Threshold_minutes, Threshold_seconds, FileHandler.CalcTime(path));
+        FileHandler.ThresholdCalc(Threshold_years, Threshold_months, Threshold_days, Threshold_hours, Threshold_minutes, Threshold_seconds, Custom_Scripts, FileHandler.CalcTime(path));
 
 
 

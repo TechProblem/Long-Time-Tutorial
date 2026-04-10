@@ -115,7 +115,7 @@ public class templateCS : MonoBehaviour
                 if (Custom_Scripts != null)
                 {
                     // Activate the custom scripts GameObject
-                    Custom_Scripts.SetActive(true);
+                    Custom_Scripts.gameObject.SetActive(true);
                     Debug.Log("Custom scripts activated.");
                 }
                 else
@@ -150,10 +150,13 @@ public class templateCS : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
+        Custom_Scripts.SetActive(false); // Ensure the custom scripts GameObject is initially inactive
+
         // This method is called when the script instance is being loaded
         Debug.Log("checkTime script is loaded.");
         FileHandler.CheckFile();
         FileHandler.ThresholdCalc(Threshold_years, Threshold_months, Threshold_days, Threshold_hours, Threshold_minutes, Threshold_seconds, Custom_Scripts, FileHandler.CalcTime(path));
+        
 
 
 

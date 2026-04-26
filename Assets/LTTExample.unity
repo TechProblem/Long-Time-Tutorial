@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1288868015}
-  - component: {fileID: 1288868014}
+  - component: {fileID: 1288868016}
   m_Layer: 0
   m_Name: LTTPlugin
   m_TagString: Untagged
@@ -215,27 +215,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1288868014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288868013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddd56b73121740747900cf5a1697da36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LTTPlugin
-  directoryPath: Assets/Plugins/x86_64/
-  path: Assets/Plugins/x86_64/LTTTime.txt
-  Threshold_years: 0
-  Threshold_months: 0
-  Threshold_days: 0
-  Threshold_hours: 0
-  Threshold_minutes: 0
-  Threshold_seconds: 10
-  Custom_Scripts: {fileID: 11400000, guid: 711041c7df055d042ab2e87283024336, type: 2}
 --- !u!4 &1288868015
 Transform:
   m_ObjectHideFlags: 0
@@ -251,6 +230,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1288868016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288868013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74ee4a2204fae548a6e7f7d73740300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LTTActivator
+  TargetToActivate: {fileID: 1766126876}
+  RunCustom: 1
+  GetThresholdyears: 0
+  GetThresholdmonths: 0
+  GetThresholddays: 0
+  GetThresholdhours: 0
+  GetThresholdminutes: 0
+  GetThresholdseconds: 10
 --- !u!1 &1590463951
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1766126879
 Transform:
   m_ObjectHideFlags: 0
@@ -556,10 +555,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1766126876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5340dbd7efb9c544daa93617ebdcc4cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 21e9c6ba6de4e034f8313beb82875174, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CustomScriptRegistrar
-  scripts: []
+  m_EditorClassIdentifier: Assembly-CSharp::Hello
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
